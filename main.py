@@ -1,5 +1,6 @@
 import random
 
+
 class Rom:
     def __init__(self):
         self.write_rom = [0b0000 for _ in range(256)]
@@ -24,6 +25,7 @@ class Rom:
         self.rom = tuple(self.write_rom)
         self.writable = False
         del self.write_rom
+        del self.set
 
     def get(self, position: int) -> int:
         """
@@ -295,7 +297,7 @@ if __name__ == "__main__":
     # rom.set(5, 0b0001_0010)
     # rom.set(6, 0b1110_0000)
     # rom.set(7, 0b1000_0000)
-    for i, value in enumerate([193, 16, 194, 24, 16, 18, 224, 128, 0, 160, 7]):
+    for i, value in enumerate([193, 16, 194, 24, 17, 18, 225, 128, 0, 160, 7]):
         rom.set(i, value)
     rom.finish_rom_init()
 
@@ -304,7 +306,7 @@ if __name__ == "__main__":
 
     cpu = CPU(rom, registers, inout)
 
-    for _ in range(100000000):
+    for _ in range(10):
         cpu.step()
 
     print(bin(inout.get_external(0b1000)))

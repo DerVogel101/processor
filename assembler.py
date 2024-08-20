@@ -183,7 +183,7 @@ if __name__ == "__main__":
     print(binary)
     for bit4 in binary:
         if isinstance(bit4, int):
-            print(bin(bit4), end=" ")
+            print(hex(bit4), end=" ")
         else:
             print(bit4, end=" ")
         print()
